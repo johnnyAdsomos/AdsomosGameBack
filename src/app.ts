@@ -1,5 +1,7 @@
 import express from 'express';
 import path from 'path'
+import fs from 'fs'
+
 import { Router, Request, Response } from 'express';
 
 const app = express();
@@ -15,8 +17,19 @@ route.get('/assets/centered/:champion', (req, res) => {
     const options = {
         root: path.join(__dirname)
     };
+    console.log(options)
+    fs.readdir('./', (err, dir) => {
+        console.log(dir)
+    })
+    fs.readdir('./src', (err, dir) => {
+        console.log(dir)
+    })
+    fs.readdir('./src/assets', (err, dir) => {
+        console.log(dir)
+    })
     const fileName = `./assets/centered/${champion}.jpg`
-    res.sendFile(fileName, options, (err) => { console.log(err)})
+    res.sendFile(fileName, options, (err) => {})
+    
 })
 
 app.use(route)
