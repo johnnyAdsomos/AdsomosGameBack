@@ -21,4 +21,4 @@ route.get('/assets/centered/:champion', (req, res) => {
 
 app.use(route)
 
-app.listen(8080, () => console.log('server running'));
+export default app;
