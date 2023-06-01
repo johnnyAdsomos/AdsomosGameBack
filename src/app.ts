@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path'
 import fs from 'fs'
 
 import { Router, Request, Response } from 'express';
@@ -15,19 +14,10 @@ route.get('/', (req: Request, res: Response) => {
 route.get('/assets/centered/:champion', (req, res) => {
     const champion = req.params.champion
     const options = {
-        root: path.join(__dirname)
+        root: 'C:\\github\\AdsomosGameBack\\'
     };
     console.log(options)
-    fs.readdir('./', (err, dir) => {
-        console.log(dir)
-    })
-    fs.readdir('./src', (err, dir) => {
-        console.log(dir)
-    })
-    fs.readdir('./src/assets', (err, dir) => {
-        console.log(dir)
-    })
-    const fileName = `./assets/centered/${champion}.jpg`
+    const fileName = `/public/images/centered/${champion}.jpg`
     res.sendFile(fileName, options, (err) => {})
     
 })
