@@ -1,4 +1,5 @@
 import express from 'express';
+import Path from '../path'
 import fs from 'fs'
 
 import { Router, Request, Response } from 'express';
@@ -14,7 +15,7 @@ route.get('/', (req: Request, res: Response) => {
 route.get('/assets/centered/:champion', (req, res) => {
     const champion = req.params.champion
     const options = {
-        root: 'C:\\github\\AdsomosGameBack\\'
+        root: Path
     };
     console.log(options)
     const fileName = `/public/images/centered/${champion}.jpg`
