@@ -11,9 +11,11 @@ datasource db {
 }
 
 model Player {
-  champion String @id
+  champion String @id @unique
   name String
   score Int
+  admin Boolean @default(false)
+  historics Historic[]
 
   @@map("player")
 }
@@ -21,7 +23,18 @@ model Player {
 model Quest {
   id Int @id @default(autoincrement())
   title String
-  description String
+  description String?
+  type String
+  reward Int
+
+  @@map("quest")
+}
+
+model Historic{
+  id Int @id @default(autoincrement())
+  player Player @relation(fields: [champion], references: [champion])
+  champion String
+  title String
   type String
   reward Int
 }
